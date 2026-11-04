@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shreyansh Sarthak</title>
+<meta name="description" content="Shreyansh Sarthak, software developer in Bangalore.">
+<meta name="theme-color" content="#CC1126">
+<meta property="og:title" content="Shreyansh Sarthak">
+<meta property="og:description" content="Software developer in Bangalore.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23CC1126'/%3E%3Ctext x='16' y='24' text-anchor='middle' font-family='Arial Black,sans-serif' font-size='22' font-weight='900' fill='%23F3EDE1'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Reenie+Beanie&family=Familjen+Grotesk:wght@500;700&display=swap">
+<style>
+:root {
+  --red: #CC1126;
+  --red-dark: #8F0B1B;
+  --ink: #141216;
+  --paper: #F3EDE1;
+  --white: #FFFFFF;
+  --display: "Dela Gothic One", Impact, "Arial Black", sans-serif;
+  --text: "Familjen Grotesk", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+.skip {
+  position: fixed;
+  z-index: 60;
+  left: 12px;
+  top: 12px;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  translate: 0 -200%;
+}
+.skip:not(:focus) { clip-path: inset(50%); }
+.skip:focus { translate: 0 0; }
+[id] { scroll-margin-top: 12px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media (prefers-reduced-motion: reduce) { .dot i { transition: none; } }
+html { background: var(--paper); }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font: 500 1.125rem/1.45 var(--text);
+  overflow-x: hidden;
+}
+html.has-dot, html.has-dot a, html.has-dot button { cursor: none; }
+
+/* First screen */
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 520px;
+  overflow: hidden;
+  overflow: clip;
+  background: var(--red);
+  color: var(--paper);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.4 -.35'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.bar {
+  position: absolute;
+  z-index: 5;
+  inset: 0 0 auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px clamp(16px, 2.6vw, 40px);
+  font-weight: 700;
+}
+.bar nav { display: flex; gap: clamp(16px, 3vw, 44px); }
+a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.bar a { text-decoration: none; }
+.bar a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+
+.name {
+  position: absolute;
+  z-index: 1;
+  inset: 62px 0 auto 0;
+  margin: 0;
+  font: 400 11vw/.93 var(--display);
+  text-align: center;
+  white-space: nowrap;
+  will-change: transform;
+}
+.name span { display: block; overflow: hidden; padding: .03em 0 .05em; }
+.name b { display: block; font-weight: 400; }
+
+.figure {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: -2svh;
+  height: min(84svh, 118vw);
+  aspect-ratio: 1220 / 1450;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  translate: -50% 0;
+  cursor: pointer;
+  pointer-events: none;
+  will-change: transform;
+  color: var(--paper);
+}
+.figure:focus-visible { outline: none; }
+.figure:focus-visible .badge { outline: 4px dashed var(--paper); outline-offset: 2px; border-radius: 50%; }
+.me { position: relative; display: block; width: 100%; height: 100%; pointer-events: none; user-select: none; }
+.figure svg.doodle { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.doodle-art { display: block; overflow: visible; pointer-events: none; }
+.scatter { position: absolute; z-index: 1; height: auto; }
+.scatter-l { left: clamp(14px, 3vw, 70px); bottom: 25svh; width: min(24vw, 25svh); }
+.scatter-r { right: clamp(14px, 2.4vw, 60px); bottom: 10svh; width: min(25vw, 38svh); }
+.note { fill: var(--paper); font: 400 118px/1 "Reenie Beanie", "Segoe Print", cursive; }
+.draw { stroke-dasharray: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .draw { animation: draw .7s cubic-bezier(.4, 0, .2, 1) 1.05s backwards; }
+  .pop { animation: pop .34s cubic-bezier(.2, 1.5, .4, 1) 1.15s backwards; transform-box: fill-box; transform-origin: center; }
+  .note { animation: fade .3s linear 1.4s backwards; }
+  .doodle-front .draw { animation-delay: 1.3s; }
+  .scatter .draw { animation-delay: 1.6s; }
+}
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes pop { from { opacity: 0; transform: scale(.4) rotate(-14deg); } }
+@keyframes fade { from { opacity: 0; } }
+.hit-area {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  clip-path: polygon(34% 2%, 62% 2%, 66% 30%, 60% 50%, 100% 72%, 100% 100%, 0 100%, 0 72%, 38% 50%, 33% 30%);
+}
+.figure .badge { position: absolute; right: -6%; top: 40%; width: 23%; height: auto; overflow: visible; pointer-events: auto; }
+.bubble {
+  position: absolute;
+  left: 66%;
+  top: 8%;
+  padding: .32em .7em .4em;
+  background: var(--paper);
+  color: var(--ink);
+  border: 4px solid var(--white);
+  box-shadow: 4px 5px 0 var(--red-dark);
+  font: 400 clamp(1.1rem, 2.2vw, 2rem)/1 var(--display);
+  white-space: nowrap;
+  rotate: -5deg;
+  visibility: hidden;
+}
+.bubble.is-on { visibility: visible; }
+.figure svg [hidden] { display: none; }
+.figure svg { display: block; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.figure .hit { pointer-events: auto; fill: transparent; }
+.figure .hit-solid { pointer-events: auto; }
+.role {
+  position: absolute;
+  z-index: 1;
+  left: clamp(16px, 2.6vw, 40px);
+  bottom: clamp(70px, 14svh, 130px);
+  margin: 0;
+  font: 700 clamp(1.25rem, 2.2vw, 2rem)/1.12 var(--text);
+}
+.tear {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: clamp(44px, 9svh, 96px);
+  pointer-events: none;
+}
+.tear svg { display: block; width: 100%; height: 100%; }
+
+/* Wide, short screens: the name sits either side of the photo instead of behind it. */
+@media (min-aspect-ratio: 19/10) {
+  .name { inset: 0; }
+  .name span { position: absolute; width: max-content; }
+  .name span:first-child { left: 2.4vw; top: 19svh; }
+  .name span:last-child { right: 2.4vw; top: 30svh; }
+  .figure { height: 88svh; }
+  .scatter-l { bottom: 26svh; width: min(16vw, 28svh); }
+  .scatter-r { bottom: 9svh; width: min(19vw, 40svh); }
+}
+
+/* Next sheet of paper */
+.sheet {
+  position: relative;
+  padding: clamp(48px, 9vw, 120px) clamp(16px, 6vw, 96px) clamp(64px, 10vw, 140px);
+  background: var(--paper);
+}
+.about-art { position: absolute; right: clamp(16px, 4vw, 90px); top: 50%; translate: 0 -50%; width: min(39vw, 660px); height: auto; }
+@media (min-width: 1001px) { .sheet > :not(.about-scene) { max-width: 46vw; } }
+.sheet h2 {
+  margin: 0;
+  font: 400 clamp(2rem, 4.6vw, 5rem)/1.04 var(--display);
+}
+.sheet p { max-width: min(58ch, 100%); margin: 28px 0 0; font-size: clamp(1.125rem, 1.6vw, 1.4rem); }
+.links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 28px 0 0; padding: 0; list-style: none; font-weight: 700; font-size: 1.25rem; }
+
+/* Projects: prints taped to the same sheet of paper */
+.work {
+  position: relative;
+  padding: 28px clamp(16px, 5vw, 80px) clamp(72px, 10vw, 140px);
+  background: var(--paper);
+  overflow: clip;
+}
+.cut { display: block; margin: 0; font: 400 clamp(2.15rem, 5.1vw, 5rem)/1 var(--display); }
+.cut > span { display: flex; flex-wrap: wrap; gap: .18em .34em; }
+.scrap { display: block; padding: .1em .15em .14em; }
+.scrap.ink { background: var(--ink); color: var(--paper); }
+.scrap.red { background: var(--red); color: var(--paper); }
+.scrap.plain { background: var(--white); color: var(--ink); }
+.word { display: flex; gap: .06em; white-space: nowrap; }
+.pull { margin: 22px 0 0; font: 400 clamp(1.8rem, 3vw, 2.5rem)/1 "Reenie Beanie", "Segoe Print", cursive; }
+.prints {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 64px) clamp(16px, 2vw, 32px);
+  max-width: 1360px;
+  margin: clamp(32px, 4vw, 56px) auto 0;
+  padding: 0;
+  list-style: none;
+}
+.print { position: relative; align-self: start; grid-column: span 4; rotate: var(--r); translate: var(--x, 0) var(--y, 0); }
+.print:nth-child(2) { margin-top: 48px; }
+.print:nth-child(3) { margin-top: 12px; }
+.print:nth-child(4) { margin-top: -8px; }
+.print:nth-child(5) { margin-top: 36px; }
+.print:nth-child(6) { margin-top: -18px; }
+.print a {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 12px 12px 18px;
+  background: var(--white);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 1px 0 #1412162e, 3px 5px 0 #14121622;
+  user-select: none;
+}
+.print a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  background: linear-gradient(135deg, #D8CDB8 49%, #14121644 50%, var(--paper) 53%);
+}
+.print svg { display: block; width: 100%; height: auto; }
+.tape {
+  position: absolute;
+  z-index: 1;
+  top: -14px;
+  left: 50%;
+  width: 96px;
+  height: 30px;
+  translate: -50% 0;
+  rotate: -3deg;
+  background: #E9D79A99;
+  box-shadow: inset 0 0 0 1px #14121610;
+}
+.caption { display: block; padding: 14px 4px 0; }
+.caption strong { display: block; font: 400 clamp(1.35rem, 2.1vw, 1.9rem)/1.05 var(--display); }
+.what { display: block; margin-top: 8px; line-height: 1.32; }
+.tech { display: block; margin-top: 10px; color: #5A5560; font-size: .95rem; }
+.print.is-held { z-index: 20; }
+.print.is-held a { box-shadow: 6px 18px 0 #14121630; }
+.back { min-height: 2em; margin: 24px 0 0; text-align: center; }
+.plain {
+  font: inherit;
+  font-weight: 700;
+  color: inherit;
+  padding: 0;
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.side { max-width: 60ch; margin: 28px auto 0; text-align: center; font-size: clamp(1.1rem, 1.5vw, 1.3rem); }
+.print a:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  .print a:hover::after { width: 46px; height: 46px; }
+  .print a { cursor: grab; }
+  .print.is-held a { cursor: grabbing; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .print a::after { transition: width .16s ease-out, height .16s ease-out; }
+  .print.is-settling { transition: translate .42s cubic-bezier(.2, 1.3, .4, 1), rotate .42s cubic-bezier(.2, 1.3, .4, 1); }
+}
+@media (hover: none), (pointer: coarse) { .pull { display: none; } }
+@media (max-width: 900px) {
+  .prints { display: block; max-width: 520px; }
+  .print, .print:nth-child(n) { margin: 0 0 40px; }
+  .print { rotate: calc(var(--r) * .55); }
+}
+
+/* Margin drawings around the prints */
+.work-pencil { position: absolute; top: 14px; right: clamp(16px, 3vw, 150px); width: clamp(150px, 17vw, 340px); height: auto; }
+.work-note { position: absolute; top: clamp(110px, 12vw, 180px); left: clamp(380px, 40vw, 720px); width: clamp(120px, 15vw, 260px); height: auto; }
+.work-clip { position: absolute; left: max(12px, calc(50% - 680px)); top: 50%; width: clamp(50px, 6.2vw, 100px); height: auto; }
+.work .prints { position: relative; z-index: 1; }
+.when-col { min-width: 0; }
+.job-art { width: min(100%, 150px); height: auto; margin-top: 18px; }
+.experience .cut, .pull { max-width: 1360px; margin-left: auto; margin-right: auto; }
+.experience .cut { max-width: 1180px; }
+.work .cut { max-width: 1360px; margin: 0 auto; }
+@media (max-width: 1000px) {
+  .about-art { position: static; translate: none; width: min(100%, 520px); margin: 28px 0 0; order: 2; }
+  .work-note, .work-clip { display: none; }
+  .work-pencil { position: static; display: block; width: 150px; margin: 8px 0 0 auto; }
+}
+@media (max-width: 720px) {
+  .job-art { display: none; }
+}
+
+/* Shared torn edge at the top of a section */
+.rip-edge { position: absolute; left: 0; top: -1px; width: 100%; height: clamp(44px, 8vw, 90px); pointer-events: none; }
+.rip-edge svg { display: block; width: 100%; height: 100%; transform: scaleY(-1); }
+
+/* Experience: sheets of paper on black */
+.experience {
+  position: relative;
+  padding: clamp(90px, 12vw, 170px) clamp(16px, 5vw, 80px) clamp(70px, 8vw, 110px);
+  background: var(--ink);
+  color: var(--paper);
+  overflow: clip;
+}
+.experience .scrap.paper { background: var(--paper); color: var(--ink); }
+.experience .scrap.plain { background: var(--ink); color: var(--paper); box-shadow: inset 0 0 0 3px var(--paper); }
+.jobs { display: grid; gap: clamp(36px, 5vw, 72px); max-width: 1180px; margin: clamp(36px, 5vw, 72px) auto 0; }
+.job { display: grid; grid-template-columns: minmax(150px, 2fr) 9fr; gap: clamp(16px, 3vw, 44px); align-items: start; }
+.when { margin: 14px 0 0; font: 400 clamp(1.8rem, 2.6vw, 2.4rem)/1 "Reenie Beanie", "Segoe Print", cursive; }
+.sheet-wrap { filter: drop-shadow(5px 7px 0 #00000066); }
+.job-sheet { position: relative; padding: clamp(24px, 3vw, 40px) clamp(20px, 3vw, 44px) clamp(40px, 4vw, 56px); background: var(--paper); color: var(--ink); }
+.job-sheet .tape { top: 0; left: 88%; }
+.job-sheet h3 { margin: 0; font: 400 clamp(1.8rem, 4.2vw, 3.6rem)/1 var(--display); }
+.job-role { margin: 8px 0 0; font-weight: 700; font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
+.job-sheet ul { max-width: 72ch; margin: 18px 0 0; padding: 0 0 0 1.1em; list-style: square; }
+.job-sheet li { margin-top: 9px; line-height: 1.38; }
+.job-sheet li::marker { color: var(--red); }
+mark {
+  color: inherit;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='8'%3E%3Cpath d='M0 5C7 1 15 1 22 4S37 8 44 4' fill='none' stroke='%23CC1126' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left bottom / 44px 8px;
+  padding-bottom: 5px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Contact: back to the red */
+.contact {
+  position: relative;
+  min-height: clamp(1020px, 58vw, 1160px);
+  padding: clamp(100px, 13vw, 170px) clamp(16px, 5vw, 80px) clamp(150px, 16vw, 220px);
+  background: var(--red);
+  color: var(--paper);
+  overflow: clip;
+}
+.say { margin: 0; font: 400 clamp(4.2rem, 14vw, 15rem)/.9 var(--display); }
+.mail { margin: clamp(30px, 4.6vw, 70px) 0 0; font: 400 clamp(1.25rem, 2.75vw, 2.7rem)/1.1 var(--display); overflow-wrap: anywhere; }
+.mail a { text-decoration-thickness: .06em; text-underline-offset: .14em; }
+.actions { display: flex; align-items: baseline; gap: 16px; min-height: 2.2em; margin: 20px 0 0; font-size: 1.2rem; }
+#copied { font: 400 2rem/1 "Reenie Beanie", "Segoe Print", cursive; }
+.elsewhere { display: flex; flex-wrap: wrap; gap: 8px 30px; margin: 22px 0 0; padding: 0; list-style: none; font-weight: 700; font-size: clamp(1.15rem, 1.7vw, 1.5rem); }
+.contact :focus-visible { outline-color: var(--paper); }
+.contact > *:not(.rip-edge, .plane, .envelope, .peek-wrap, .foot, .telephone) { position: relative; z-index: 2; }
+.telephone { position: absolute; z-index: 1; left: clamp(270px, 25vw, 620px); bottom: 110px; width: clamp(110px, 10.5vw, 220px); height: auto; rotate: 5deg; }
+@media (max-width: 1100px) { .telephone { display: none; } }
+.plane { position: absolute; z-index: 1; top: clamp(70px, 8vw, 110px); right: 3vw; width: clamp(240px, 32vw, 520px); height: auto; overflow: visible; pointer-events: none; }
+.envelope { position: absolute; z-index: 1; left: clamp(16px, 6vw, 96px); bottom: 104px; width: clamp(150px, 20vw, 300px); height: auto; overflow: visible; pointer-events: none; rotate: -5deg; }
+.peek-wrap {
+  position: absolute;
+  z-index: 1;
+  right: clamp(-20px, 7vw, 120px);
+  bottom: 0;
+  width: clamp(240px, 38vw, 620px);
+  aspect-ratio: 1220 / 1450;
+  translate: 0 21%;
+  rotate: -3deg;
+  pointer-events: none;
+}
+.peek { position: relative; display: block; width: 100%; height: 100%; }
+.peek-back, .peek-front { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.go-on { fill: var(--paper); font: 400 140px/1 "Reenie Beanie", "Segoe Print", cursive; }
+.foot {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px clamp(16px, 5vw, 80px) 18px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+}
+.foot p { margin: 0; }
+.foot-edge { position: absolute; left: 0; bottom: 100%; width: 100%; height: clamp(22px, 3.4vw, 42px); margin-bottom: -1px; pointer-events: none; }
+.foot-edge svg { display: block; width: 100%; height: 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  .contact .draw, .contact .pop { animation: none; }
+  .contact.seen .draw { animation: draw .8s cubic-bezier(.4, 0, .2, 1) .15s backwards; }
+  .contact.seen .pop { animation: pop .34s cubic-bezier(.2, 1.5, .4, 1) .3s backwards; }
+  .peek-wrap { transition: translate .3s cubic-bezier(.2, 1.4, .4, 1); }
+  .contact:hover .peek-wrap, .contact:focus-within .peek-wrap { translate: 0 18%; }
+}
+@media (max-width: 720px) {
+  .job { grid-template-columns: 1fr; gap: 6px; }
+  .when { margin: 0; }
+  .bar a[href="#top"] { display: none; }
+  .bar { justify-content: center; }
+  .bar nav { gap: 18px; }
+  .plane { display: none; }
+  .envelope { left: 14px; bottom: 112px; width: 40vw; }
+  .peek-wrap { right: -46px; width: 72vw; translate: 0 24%; }
+  .contact:hover .peek-wrap, .contact:focus-within .peek-wrap { translate: 0 24%; }
+  .go-on, .peek-front > path.draw:last-child { display: none; }
+  .contact { min-height: 0; padding-bottom: 104vw; }
+  .foot { font-size: .95rem; }
+}
+
+/* Cursor: exactly on the pointer, never trailing it. */
+.dot {
+  position: fixed;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+.has-dot .dot.is-in { opacity: 1; }
+.dot i {
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--dot, var(--ink));
+  color: var(--dot-text, var(--paper));
+  font: 700 .95rem/1 var(--text);
+  font-style: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width .2s cubic-bezier(.2, 1.5, .4, 1), height .2s cubic-bezier(.2, 1.5, .4, 1), margin .2s cubic-bezier(.2, 1.5, .4, 1), background-color .12s;
+}
+.dot.is-big i { width: 76px; height: 76px; margin: -38px 0 0 -38px; box-shadow: 0 0 0 3px var(--white); }
+.dot.is-press i { width: 58px; height: 58px; margin: -29px 0 0 -29px; }
+.dot:not(.is-big) span { display: none; }
+
+@media (max-aspect-ratio: 1/1) {
+  .hero { height: min(100svh, 190vw); min-height: 0; }
+  .name { inset-block-start: 62px; }
+  .figure { height: min(128vw, 62svh); bottom: -1vw; }
+  .figure .badge { right: 6%; top: 42%; width: 22%; }
+  .bubble { left: 58%; top: 3%; }
+  .role { left: 0; right: 0; bottom: auto; text-align: center; font-size: 1.05rem; }
+  .role br { display: none; }
+  .scatter { display: none; }
+  .note { translate: 150px 22px; font-size: 96px; }
+}
+@media (forced-colors: active) {
+  .dot { display: none; }
+  html.has-dot, html.has-dot a, html.has-dot button { cursor: auto; }
+}
+
+/* Background patterns: graph paper with faint doodles, print dots on red, chalk dust on black. */
+.sheet, .work, .desk {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='280'%20height='280'%20viewBox='0%200%20280%20280'%3E%3Cg%20fill='none'%20stroke='%23141216'%20stroke-opacity='.07'%20stroke-width='3.2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M40%2034l7%2019%2020%201-16%2012%206%2020-17-11-17%2011%206-20-16-12%2020-1z'/%3E%3Cpath%20d='M150%2030l16%2016m0-16l-16%2016'/%3E%3Cpath%20d='M222%2044c12-14%2024-14%2034%200s22%2014%2032%200'/%3E%3Cpath%20d='M104%20118c14-10%2034-2%2032%2016s-26%2022-32%208c-4-12%2012-18%2018-8'/%3E%3Cpath%20d='M206%20122l18%2018-18%2018-18-18z'/%3E%3Cpath%20d='M24%20176c10-14%2022-14%2032%200s22%2014%2032%200'/%3E%3Cpath%20d='M158%20214l14-24%202%2018%2016-4-16%2028-2-18z'/%3E%3Cpath%20d='M244%20226l14%2014m0-14l-14%2014'/%3E%3Ccircle%20cx='52'%20cy='250'%20r='11'/%3E%3Cpath%20d='M100%20244c6-8%2018-4%2016%206-2%208-16%2014-16%2014s-14-6-16-14c-2-10%2010-14%2016-6z'%20transform='translate(16%20-4)'/%3E%3C/g%3E%3C/svg%3E"), linear-gradient(#14121610 1.5px, transparent 1.5px), linear-gradient(90deg, #14121610 1.5px, transparent 1.5px);
+  background-size: 280px 280px, 36px 36px, 36px 36px;
+}
+.hero, .skills, .contact {
+  background-color: var(--red);
+  background-image: radial-gradient(#8F0B1B66 1.9px, transparent 2.2px);
+  background-size: 15px 15px;
+}
+.experience {
+  background-color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='280'%20height='280'%20viewBox='0%200%20280%20280'%3E%3Cg%20fill='none'%20stroke='%23F3EDE1'%20stroke-opacity='.075'%20stroke-width='3.2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M40%2034l7%2019%2020%201-16%2012%206%2020-17-11-17%2011%206-20-16-12%2020-1z'/%3E%3Cpath%20d='M150%2030l16%2016m0-16l-16%2016'/%3E%3Cpath%20d='M222%2044c12-14%2024-14%2034%200s22%2014%2032%200'/%3E%3Cpath%20d='M104%20118c14-10%2034-2%2032%2016s-26%2022-32%208c-4-12%2012-18%2018-8'/%3E%3Cpath%20d='M206%20122l18%2018-18%2018-18-18z'/%3E%3Cpath%20d='M24%20176c10-14%2022-14%2032%200s22%2014%2032%200'/%3E%3Cpath%20d='M158%20214l14-24%202%2018%2016-4-16%2028-2-18z'/%3E%3Cpath%20d='M244%20226l14%2014m0-14l-14%2014'/%3E%3Ccircle%20cx='52'%20cy='250'%20r='11'/%3E%3Cpath%20d='M100%20244c6-8%2018-4%2016%206-2%208-16%2014-16%2014s-14-6-16-14c-2-10%2010-14%2016-6z'%20transform='translate(16%20-4)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 280px 280px;
+}
+.scrap.paper { background: var(--paper); color: var(--ink); }
+
+/* Poses */
+.pose { display: block; width: 100%; height: auto; filter: drop-shadow(6px 8px 0 #14121633); user-select: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .pose { transition: transform .22s cubic-bezier(.2, 1.5, .4, 1); }
+  .pose:hover { transform: translateY(-8px) rotate(-1.5deg); }
+}
+
+/* About */
+.sheet { min-height: clamp(600px, 44vw, 860px); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.about-scene { position: absolute; right: clamp(16px, 4vw, 100px); top: 50%; translate: 0 -50%; width: min(46vw, 780px); aspect-ratio: 760 / 620; }
+.about-scene .pose { position: absolute; left: 14%; bottom: 5%; width: 70%; }
+.scene-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Bottom of the projects */
+.work-foot { display: flex; align-items: center; justify-content: center; gap: clamp(20px, 4vw, 70px); max-width: 1000px; margin: clamp(16px, 3vw, 40px) auto 0; }
+.sign-pose { position: relative; flex: none; width: clamp(210px, 21vw, 320px); }
+.sign-text { position: absolute; left: 15%; top: 28%; width: 70%; margin: 0; rotate: -3deg; font: 400 clamp(1.5rem, 2.1vw, 2.15rem)/.98 "Reenie Beanie", "Segoe Print", cursive; color: var(--ink); text-align: center; }
+.sign-text a { display: block; margin-top: 4px; color: #A9101F; font-weight: 700; }
+.sign-copy { max-width: 44ch; }
+.sign-copy svg { width: 130px; height: auto; }
+.sign-copy p { margin: 8px 0 0; font-size: clamp(1.1rem, 1.5vw, 1.3rem); }
+
+/* Skills */
+.skills { position: relative; padding: clamp(84px, 11vw, 150px) clamp(16px, 5vw, 80px) clamp(70px, 8vw, 120px); color: var(--paper); overflow: clip; }
+.skills .cut, .skills .pull, .skills-grid { max-width: 1360px; margin-left: auto; margin-right: auto; }
+.pull.on-red { color: var(--paper); }
+.skills-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(260px, 28vw, 460px); gap: clamp(20px, 3vw, 56px); align-items: center; margin-top: clamp(26px, 3.5vw, 48px); }
+.kits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(26px, 3vw, 44px) clamp(18px, 2.4vw, 34px); }
+.kit { position: relative; padding: 24px 20px 24px; background: var(--paper); color: var(--ink); box-shadow: 4px 6px 0 #5E0713; }
+.kit .tape { top: -13px; }
+.kit h3 { margin: 0; font: 400 clamp(1.9rem, 2.5vw, 2.5rem)/1 "Reenie Beanie", "Segoe Print", cursive; }
+.kit ul { display: flex; flex-wrap: wrap; gap: 9px; margin: 14px 0 0; padding: 0; list-style: none; }
+.sticker { position: relative; padding: .28em .72em .34em; rotate: var(--r); translate: var(--x, 0) var(--y, 0); border: 3px solid var(--white); border-radius: 999px; box-shadow: 2px 3px 0 #1412164d; font-weight: 700; touch-action: auto; user-select: none; }
+.s0 { background: var(--ink); color: var(--paper); }
+.s1 { background: var(--red); color: var(--white); }
+.s2 { background: var(--white); color: var(--ink); border-color: var(--ink); }
+.sticker.is-held { z-index: 30; box-shadow: 5px 12px 0 #14121644; }
+.tools-pose { position: relative; }
+.tools-pose svg, .point-pose svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tools-pose .pose, .point-pose .pose { position: relative; width: 86%; margin: 0 auto; }
+@media (hover: hover) and (pointer: fine) { .sticker { cursor: grab; } .sticker.is-held { cursor: grabbing; } }
+@media (prefers-reduced-motion: no-preference) { .sticker.is-settling { transition: translate .4s cubic-bezier(.2, 1.3, .4, 1); } }
+
+/* Experience */
+.carry-pose { width: min(100%, 130px); margin-top: 14px; }
+
+/* On my desk */
+.desk { position: relative; padding: clamp(84px, 11vw, 150px) clamp(16px, 5vw, 80px) clamp(90px, 10vw, 150px); overflow: clip; }
+.desk .cut, .desk .pull, .desk-grid { max-width: 1240px; margin-left: auto; margin-right: auto; }
+.desk-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(190px, 21vw, 320px); gap: clamp(20px, 3vw, 50px); align-items: center; margin-top: clamp(26px, 3vw, 40px); }
+.notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(22px, 3vw, 44px); margin: 0; padding: 0; list-style: none; }
+.note-card { position: relative; min-height: 210px; padding: 28px 24px 26px; background: #F4DE8A; color: var(--ink); box-shadow: 3px 6px 0 #1412162b; }
+.note-card.n0 { rotate: -2deg; } .note-card.n1 { rotate: 1.6deg; top: 16px; background: var(--white); }
+.note-card.n2 { rotate: 1.2deg; background: var(--white); } .note-card.n3 { rotate: -1.6deg; top: 12px; }
+.note-card h3 { margin: 0; font: 400 clamp(1.4rem, 2.1vw, 1.9rem)/1.05 var(--display); }
+.note-card p { margin: 10px 0 0; font: 400 clamp(1.8rem, 2.4vw, 2.4rem)/1.04 "Reenie Beanie", "Segoe Print", cursive; }
+.pin { position: absolute; top: -10px; left: 50%; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; background: var(--red); border: 3px solid var(--ink); box-shadow: 2px 3px 0 #14121644; }
+.point-pose { position: relative; }
+
+/* Contact, with the jumping pose */
+.peek-wrap { aspect-ratio: 825 / 1366; width: clamp(210px, 25vw, 430px); right: clamp(14px, 9vw, 200px); bottom: 52px; translate: none; rotate: 2deg; }
+.contact:hover .peek-wrap, .contact:focus-within .peek-wrap { translate: 0 -10px; }
+.peek { filter: drop-shadow(7px 9px 0 #5E0713); }
+
+/* Right-click menu */
+.ctx { position: fixed; z-index: 70; width: 268px; padding: 16px 12px 12px 78px; background: var(--paper); color: var(--ink); border: 3px solid var(--ink); box-shadow: 6px 8px 0 #14121666; rotate: -1deg; }
+.ctx[hidden] { display: none; }
+.ctx img { position: absolute; left: 8px; bottom: 34px; width: 66px; height: auto; }
+.ctx-items { display: grid; gap: 2px; }
+.ctx button { width: 100%; padding: 7px 8px; background: none; border: 0; color: inherit; font: 700 1rem/1.15 var(--text); text-align: left; cursor: pointer; }
+.ctx button:hover, .ctx button:focus-visible { background: var(--red); color: var(--white); outline: none; }
+.ctx-hint { margin: 10px -2px 0 -66px; padding-top: 7px; border-top: 2px dashed #14121655; color: #4A464E; font-size: .82rem; line-height: 1.2; }
+.toast { position: fixed; z-index: 75; left: 50%; bottom: 26px; padding: 8px 16px 10px; translate: -50% 0; background: var(--ink); color: var(--paper); font: 400 1.7rem/1 "Reenie Beanie", "Segoe Print", cursive; rotate: -1.5deg; }
+.toast:empty { display: none; }
+.dot { z-index: 80; }
+
+@media (max-width: 1000px) {
+  .sheet { min-height: 0; }
+  .about-scene { position: relative; right: auto; top: auto; translate: none; width: min(100%, 560px); margin: 30px auto 0; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .tools-pose { width: min(60vw, 300px); margin: 0 auto; }
+  .desk-grid { grid-template-columns: 1fr; }
+  .point-pose { width: min(52vw, 240px); margin: 10px auto 0; }
+  .work-foot { flex-direction: column; text-align: center; }
+}
+@media (max-width: 720px) {
+  .kits, .notes { grid-template-columns: 1fr; }
+  .note-card { min-height: 0; top: 0 !important; }
+  .carry-pose { display: none; }
+  .bar nav { flex-wrap: wrap; justify-content: center; gap: 2px 12px; font-size: .92rem; }
+  .sign-pose { width: 250px; }
+  .sign-text { font-size: 1.65rem; }
+  .sign-copy svg { display: none; }
+  .peek-wrap { right: 4px; bottom: 52px; width: 50vw; }
+  .contact:hover .peek-wrap, .contact:focus-within .peek-wrap { translate: none; }
+  .contact { padding-bottom: 104vw; }
+  .envelope { width: 38vw; bottom: 86px; }
+}
+@media (forced-colors: active) {
+  .ctx { border-color: CanvasText; background: Canvas; }
+}
+
+/* Time-of-day greeting */
+.greet { display: block; margin-bottom: 4px; font: 400 clamp(1.7rem, 2.5vw, 2.4rem)/1 "Reenie Beanie", "Segoe Print", cursive; }
+.greet:empty { display: none; }
+
+/* Search button and palette */
+.search-btn { padding: 0; background: none; border: 0; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
+.search-btn kbd { margin-left: 4px; padding: 1px 6px 2px; border: 2px solid currentColor; font: 700 .78em/1.2 var(--text); }
+.search-btn:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+html:has(dialog[open]) { overflow: hidden; }
+dialog { color: var(--ink); }
+.palette, .project { position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; background: transparent; border: 0; overflow: auto; overscroll-behavior: contain; }
+.palette::backdrop, .project::backdrop { background: #141216b0; }
+.palette-card { width: min(620px, calc(100% - 28px)); margin: 12svh auto 24px; padding: 20px; background: var(--paper); border: 3px solid var(--ink); box-shadow: 8px 10px 0 var(--red); rotate: -.6deg; }
+.palette-label { display: block; font: 400 2rem/1 "Reenie Beanie", "Segoe Print", cursive; }
+#paletteInput { width: 100%; margin-top: 8px; padding: 11px 12px; background: var(--white); border: 3px solid var(--ink); border-radius: 0; color: var(--ink); font: 700 1.15rem/1.2 var(--text); }
+#paletteInput:focus { outline: 3px solid var(--red); outline-offset: 1px; }
+#paletteList { max-height: 46svh; margin: 12px 0 0; padding: 0; overflow: auto; list-style: none; }
+#paletteList li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 10px; font-weight: 700; cursor: pointer; }
+#paletteList li span { color: #5A5560; font-weight: 500; }
+#paletteList li[aria-selected="true"] { background: var(--red); color: var(--white); }
+#paletteList li[aria-selected="true"] span { color: var(--white); }
+.palette-empty { padding: 10px; font: 400 1.8rem/1 "Reenie Beanie", "Segoe Print", cursive; }
+.palette-hint { margin: 10px 0 0; color: #4A464E; font-size: .9rem; }
+
+/* Project sheet */
+.project-card { position: relative; width: min(860px, calc(100% - 28px)); margin: clamp(20px, 5svh, 56px) auto; padding: clamp(18px, 3vw, 34px); background-color: var(--paper); background-image: linear-gradient(#14121610 1.5px, transparent 1.5px), linear-gradient(90deg, #14121610 1.5px, transparent 1.5px); background-size: 36px 36px; box-shadow: 8px 10px 0 var(--red); transform-origin: var(--ox, 50%) var(--oy, 0); }
+.project-card .tape { top: -13px; }
+.project-close { position: absolute; z-index: 2; top: 14px; right: 14px; padding: 7px 12px; background: var(--ink); border: 3px solid var(--white); color: var(--paper); font: 700 1rem/1 var(--text); cursor: pointer; }
+.project-close:focus-visible, .project-links a:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.project-cover svg { display: block; width: 100%; height: auto; max-height: 36svh; object-fit: contain; }
+.project-card h2 { margin: 20px 0 0; font: 400 clamp(2rem, 5vw, 3.6rem)/1 var(--display); }
+.project-tech { margin: 8px 0 0; color: #4A464E; font-weight: 700; }
+.project-body { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 32px; margin-top: 22px; }
+.project-body h3 { margin: 0; color: #A9101F; font: 400 2rem/1 "Reenie Beanie", "Segoe Print", cursive; }
+.project-body p { margin: 5px 0 0; line-height: 1.42; }
+.project-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 24px 0 4px; font-weight: 700; font-size: 1.15rem; }
+
+/* Doodle guide */
+.guide { position: fixed; z-index: 35; right: 8px; top: 0; display: none; height: 142px; opacity: 0; pointer-events: none; will-change: transform; }
+.guide.is-on { opacity: 1; pointer-events: auto; cursor: pointer; }
+.guide img { display: block; height: 100%; width: auto; filter: drop-shadow(3px 4px 0 #14121644); }
+.guide-say { position: absolute; right: calc(100% + 8px); top: 18px; padding: 5px 10px 7px; max-width: 190px; background: var(--white); color: var(--ink); border: 2px solid var(--ink); font: 400 1.5rem/1 "Reenie Beanie", "Segoe Print", cursive; white-space: nowrap; visibility: hidden; rotate: -2deg; }
+.guide-say.is-on { visibility: visible; }
+@media (min-width: 1180px) { .guide { display: block; } }
+@media (prefers-reduced-motion: no-preference) { .guide { transition: opacity .2s; } }
+
+/* Scribble */
+.scribble { position: fixed; inset: 0; z-index: 40; width: 100%; height: 100%; pointer-events: none; }
+.drawing .scribble { pointer-events: auto; touch-action: none; cursor: crosshair; }
+.draw-bar { position: fixed; z-index: 45; left: 12px; bottom: 12px; display: flex; align-items: center; gap: 8px; padding: 5px 7px; background: var(--paper); color: var(--ink); border: 3px solid var(--ink); box-shadow: 3px 4px 0 #14121666; font-weight: 700; }
+.draw-bar button { padding: 3px 7px; background: none; border: 0; color: inherit; font: 700 .95rem/1.1 var(--text); cursor: pointer; }
+.draw-bar button:focus-visible { outline: 3px solid var(--red); outline-offset: 1px; }
+#drawToggle[aria-pressed="true"] { background: var(--red); color: var(--white); }
+.draw-tools { display: inline-flex; align-items: center; gap: 6px; }
+.draw-tools[hidden] { display: none; }
+.draw-bar button.swatch { width: 24px; height: 24px; padding: 0; border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--ink); }
+.swatch.red { background: var(--red); }
+.swatch.ink { background: var(--ink); }
+.swatch[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--ink); }
+
+/* Poke combo */
+.heckler { position: absolute; z-index: 4; right: 8vw; bottom: 5svh; width: clamp(130px, 14vw, 230px); translate: 0 118%; pointer-events: none; }
+.heckler.is-up { translate: 0 0; }
+.heckler img { display: block; width: 100%; height: auto; }
+.heckler span { position: absolute; left: -46%; top: -10%; width: 130%; padding: 7px 10px 9px; background: var(--paper); color: var(--ink); border: 3px solid var(--white); box-shadow: 4px 5px 0 var(--red-dark); font: 400 1.5rem/1 "Reenie Beanie", "Segoe Print", cursive; rotate: -4deg; }
+@media (prefers-reduced-motion: no-preference) { .heckler { transition: translate .4s cubic-bezier(.2, 1.3, .4, 1); } }
+
+/* Sticker challenge */
+.shirt-count { position: relative; margin: 10px 0 0; color: var(--paper); text-align: center; font: 400 clamp(1.7rem, 2.3vw, 2.3rem)/1.05 "Reenie Beanie", "Segoe Print", cursive; }
+.sticker.stuck { box-shadow: none; }
+@media (hover: none), (pointer: coarse) { .shirt-count { display: none; } }
+.scrap-fly { position: fixed; z-index: 60; width: 14px; height: 10px; pointer-events: none; }
+
+@media (max-width: 860px) {
+  .search-btn { display: none; }
+  .project-body { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .draw-bar { left: 8px; bottom: 8px; }
+  .heckler { right: 4px; bottom: 7svh; width: 110px; }
+  .heckler span { left: -70%; font-size: 1.25rem; }
+  .greet { margin-bottom: 0; font-size: 1.4rem; }
+}
+@media (forced-colors: active) {
+  .draw-bar, .palette-card, .project-card { border: 2px solid CanvasText; background: Canvas; }
+  #paletteList li[aria-selected="true"] { outline: 2px solid Highlight; }
+}
+
+/* The label sits beside the pointer, with a small dot marking the exact spot. */
+.dot.is-big i { margin: 13px 0 0 13px; }
+.dot.is-press i { margin: 13px 0 0 13px; }
+.dot.is-big::before { content: ""; position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 50%; background: var(--dot, var(--ink)); box-shadow: 0 0 0 2px var(--white); }
+
+/* Stickers travel above the doodle, so they really land on the shirt. */
+.kits { position: relative; z-index: 3; }
+.kit:has(.is-held), .kit:has(.stuck) { z-index: 5; }
+.heckler:not(.is-up) { visibility: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .heckler { transition: translate .4s cubic-bezier(.2, 1.3, .4, 1), visibility 0s linear .4s; }
+  .heckler.is-up { transition: translate .4s cubic-bezier(.2, 1.3, .4, 1), visibility 0s; }
+}
+
+/* Off the clock */
+.off-title { margin: 24px 0 0; color: #A9101F; font: 400 clamp(1.9rem, 2.5vw, 2.5rem)/1 "Reenie Beanie", "Segoe Print", cursive; }
+.off { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 0; padding: 0; list-style: none; }
+.off li { display: flex; align-items: center; gap: 7px; padding: 6px 13px 6px 8px; background: var(--white); border: 3px solid var(--ink); box-shadow: 3px 4px 0 #14121633; font-weight: 700; }
+.off li:nth-child(odd) { rotate: -1.4deg; }
+.off li:nth-child(even) { rotate: 1.2deg; }
+.off svg { display: block; flex: none; width: 34px; height: 34px; }
+.sheet .links { margin-top: 22px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to my work</a>
+<main>
+  <section class="hero" id="hero" data-dot="ink">
+    <div class="heckler" id="heckler" aria-hidden="true"><img src="assets/doodles/confused.webp" alt="" width="935" height="1366" loading="lazy" draggable="false"><span>Hey, stop poking the real me!</span></div>
+    <header class="bar">
+      <a href="#top" id="top" data-label="Hi">Shreyansh Sarthak</a>
+      <nav aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a href="assets/Shreyansh-Sarthak-Resume.pdf" download data-label="Save">Resume</a>
+        <button class="search-btn" id="searchBtn" type="button" aria-keyshortcuts="Control+K Meta+K">Search <kbd id="searchKey">Ctrl K</kbd></button>
+      </nav>
+    </header>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="hand2" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="8"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></defs></svg><svg class="doodle-art scatter scatter-l" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand2)">
+  <path class="draw" pathLength="1" d="M196 40L222 110L296 114L238 158L258 230L196 190L134 230L154 158L96 114L170 110Z" stroke="var(--paper)" stroke-width="8"/>
+  <path class="draw" pathLength="1" d="M20 300C64 256 108 256 140 300C172 344 216 344 256 300" stroke="var(--paper)" stroke-width="8"/>
+  <path class="draw" pathLength="1" d="M326 44C310 20 276 34 286 62C294 86 326 104 326 104C326 104 358 86 366 62C376 34 342 20 326 44Z" stroke="var(--paper)" stroke-width="7"/>
+  <path class="draw" pathLength="1" d="M46 110L72 136M72 110L46 136" stroke="var(--paper)" stroke-width="7"/>
+  <path class="draw" pathLength="1" d="M326 216L296 276H332L306 334L372 258H336L362 216Z" stroke="var(--paper)" stroke-width="7"/></g></svg><svg class="doodle-art scatter scatter-r" viewBox="0 0 440 400" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand2)">
+  <path class="draw" pathLength="1" d="M138 186C208 136 306 172 292 268C282 340 170 352 146 286C128 232 212 208 232 256" stroke="var(--paper)" stroke-width="9"/>
+  <path class="draw" pathLength="1" d="M384 40L424 80L384 120L344 80Z" stroke="var(--paper)" stroke-width="8"/>
+  <path class="draw" pathLength="1" d="M330 330L364 364M364 330L330 364" stroke="var(--paper)" stroke-width="8"/>
+  <path class="draw" pathLength="1" d="M20 372C80 330 140 330 200 372C258 412 300 400 360 396" stroke="var(--paper)" stroke-width="8"/>
+  <circle class="pop" cx="82" cy="72" r="34" fill="#F3EDE1" stroke="#141216" stroke-width="7"/>
+  <path class="draw" pathLength="1" d="M28 96C60 62 112 40 138 46C146 56 104 88 60 106C38 114 22 108 28 96Z" stroke="var(--ink)" stroke-width="6"/>
+  <path class="draw" pathLength="1" d="M214 40L222 62L244 70L222 78L214 100L206 78L184 70L206 62Z" stroke="var(--paper)" stroke-width="6"/></g></svg>
+
+    <h1 class="name" id="name" aria-label="Shreyansh Sarthak">
+      <span aria-hidden="true"><b data-fit>SHREYANSH</b></span>
+      <span aria-hidden="true"><b data-fit>SARTHAK</b></span>
+    </h1>
+
+    <button class="figure" id="figure" type="button" aria-label="Poke the photo of Shreyansh" data-dot="ink" data-label="Poke">
+      <svg class="doodle doodle-back" viewBox="0 0 1220 1450" aria-hidden="true">
+        <defs><filter id="hand" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="3"/>
+            <feDisplacementMap in="SourceGraphic" scale="5"/>
+          </filter></defs>
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand)">
+          <path class="draw" pathLength="1" d="M262 300L176 262M250 214L170 150M304 128L252 48M930 118L986 34M976 214L1064 158M996 312L1084 288" stroke="var(--ink)" stroke-width="11"/>
+          <path class="draw" pathLength="1" d="M214 396L128 392M1006 412L1094 424" stroke="var(--ink)" stroke-width="11"/>
+          <path class="draw" pathLength="1" d="M120 650C74 612 92 552 150 556C206 560 214 632 160 650C112 664 92 606 136 594C164 588 176 620 152 626" stroke="var(--paper)" stroke-width="8"/>
+          <path class="draw" pathLength="1" d="M216 560C266 500 300 470 352 448M322 440L358 446L342 480" stroke="var(--paper)" stroke-width="8"/>
+          <text class="note" x="-58" y="752" transform="rotate(-7 -58 752)">that’s me</text>
+        </g>
+      </svg>
+      <img class="me" src="assets/me.webp?v=4" alt="" width="1220" height="1450" draggable="false">
+      <svg class="doodle doodle-front" viewBox="0 0 1220 1450" aria-hidden="true">
+        <g filter="url(#hand)" stroke-linecap="round" stroke-linejoin="round">
+          <g transform="translate(14 54) rotate(-7 566 40)"><g id="crown">
+            <path class="pop" d="M452 86L430 -24L510 34L566 -66L622 30L704 -34L684 78C610 58 528 62 452 86Z" fill="#F3EDE1" stroke="#141216" stroke-width="10"/>
+            <circle class="pop" cx="430" cy="-30" r="13" fill="#CC1126" stroke="#141216" stroke-width="7"/>
+            <circle class="pop" cx="566" cy="-74" r="13" fill="#CC1126" stroke="#141216" stroke-width="7"/>
+            <circle class="pop" cx="704" cy="-40" r="13" fill="#CC1126" stroke="#141216" stroke-width="7"/>
+            <path class="pop" d="M478 56C540 40 610 38 668 50" fill="none" stroke="#CC1126" stroke-width="7"/>
+          </g></g>
+          <g fill="none">
+            <path class="draw" pathLength="1" d="M782 300L790 326L816 334L790 342L782 368L774 342L748 334L774 326Z" stroke="#F3EDE1" stroke-width="6"/>
+            <path class="draw" pathLength="1" d="M830 1000C792 1000 766 1030 768 1066C770 1104 804 1128 842 1124C880 1120 906 1088 902 1050C898 1018 866 998 830 1000M806 1048V1058M856 1046V1056M798 1082C818 1102 852 1102 872 1080" stroke="var(--paper)" stroke-width="7"/>
+            <path class="draw" pathLength="1" d="M392 960L342 1050H392L350 1136L452 1020H398L438 960Z" stroke="var(--paper)" stroke-width="7"/>
+            <path class="draw" pathLength="1" d="M300 1186C326 1152 348 1152 368 1186C388 1220 412 1220 434 1186C456 1152 478 1152 500 1186C520 1218 544 1218 566 1188" stroke="var(--paper)" stroke-width="7"/>
+            <path class="draw" pathLength="1" d="M656 1048L672 1092L718 1094L682 1122L696 1166L656 1140L616 1166L630 1122L594 1094L640 1092Z" stroke="var(--paper)" stroke-width="7"/>
+            <path class="draw" pathLength="1" d="M880 1190L916 1226M916 1190L880 1226M250 1040L276 1066M276 1040L250 1066" stroke="var(--paper)" stroke-width="6"/>
+          </g>
+        </g>
+      </svg>
+      <span class="hit-area"></span>
+      <svg class="badge" viewBox="-100 -100 200 200" aria-hidden="true">
+        <g transform="rotate(11)">
+          <path d="M0-82L19-59 46-70 49-40 79-34 65-8 86 15 59 28 62 58 32 54 15 81-8 62-34 76-42 47-72 41-61 13-83-8-57-24-65-54-35-53-23-81Z" fill="#141216" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/>
+          <text x="0" y="-4" text-anchor="middle" fill="#F3EDE1" font-family="Dela Gothic One, Impact, sans-serif" font-size="27">POKE</text>
+          <text x="0" y="26" text-anchor="middle" fill="#F3EDE1" font-family="Dela Gothic One, Impact, sans-serif" font-size="27">ME</text>
+        </g>
+      </svg>
+      <span class="bubble" id="bubble" role="status"></span>
+    </button>
+
+    <p class="role"><span class="greet" id="greet"></span>Software developer <br>in Bangalore</p>
+
+    <div class="tear" id="tear" aria-hidden="true"></div>
+  </section>
+
+  <section class="sheet" id="about" data-dot="red" data-guide="wave" data-say="Hi, I’m the small one.">
+    <div class="about-scene" aria-hidden="true">
+      <svg class="doodle-art scene-art" viewBox="0 0 760 620"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+        <circle cx="86" cy="118" r="42" fill="#F3EDE1" stroke="#141216" stroke-width="7"/>
+        <path class="draw" pathLength="1" d="M68 158H104M72 176H100M78 192H94M70 116C78 106 84 130 86 116C88 130 96 106 104 116" stroke="var(--ink)" stroke-width="7"/>
+        <path class="draw" pathLength="1" d="M86 54V28M28 82L8 66M144 82L164 66" stroke="var(--ink)" stroke-width="7"/>
+        <path class="draw" pathLength="1" d="M660 60L676 104L722 108L686 136L700 182L660 156L620 182L634 136L598 108L644 104Z" stroke="var(--red)" stroke-width="7"/>
+        <path d="M660 470H724V544Q724 558 710 558H674Q660 558 660 544Z" fill="#CC1126" stroke="#141216" stroke-width="7"/>
+        <path class="draw" pathLength="1" d="M724 488C746 486 746 528 724 526M676 446C668 428 690 418 680 398M706 446C698 428 720 418 710 398" stroke="var(--ink)" stroke-width="7"/>
+        <path class="draw" pathLength="1" d="M34 588C210 560 520 566 740 594" stroke="var(--ink)" stroke-width="6"/>
+        <path class="draw" pathLength="1" d="M30 318L52 340M52 318L30 340M716 296L734 314M734 296L716 314" stroke="var(--red)" stroke-width="6"/>
+        <path class="draw" pathLength="1" d="M58 462L68 486L92 494L68 502L58 526L48 502L24 494L48 486Z" stroke="var(--ink)" stroke-width="6"/>
+        <path class="draw" pathLength="1" d="M584 28C590 16 610 18 610 34C610 48 590 56 584 66C578 56 558 48 558 34C558 18 578 16 584 28Z" stroke="var(--red)" stroke-width="6"/>
+      </g></svg>
+      <img class="pose" src="assets/doodles/laptop.webp" alt="" width="1128" height="1366" loading="lazy" draggable="false">
+    </div>
+    <h2>I build software for the web.</h2>
+    <p>I’m a software developer at LeadSquared in Bangalore, working on web products and the systems behind them.</p>
+    <h3 class="off-title">When I’m off the clock</h3>
+    <ul class="off"><li><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="#141216" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)"><path d="M4 54L24 20L34 36L42 26L60 54Z" fill="#F3EDE1"/><path d="M18 30L24 36L30 30"/><circle cx="50" cy="13" r="6" fill="#CC1126"/></g></svg><span>Hiking</span></li><li><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="#141216" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)"><rect x="8" y="14" width="48" height="32" rx="3" fill="#F3EDE1"/><path d="M18 24L27 30L18 36M32 37H44"/><path d="M24 54H40M32 46V54" stroke="#CC1126"/></g></svg><span>Making games</span></li><li><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="#141216" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)"><path d="M18 22H46C56 22 60 34 60 44C60 52 52 54 47 46L43 40H21L17 46C12 54 4 52 4 44C4 34 8 22 18 22Z" fill="#F3EDE1"/><path d="M18 28V38M13 33H23"/><circle cx="44" cy="30" r="2.5" fill="#CC1126"/><circle cx="50" cy="36" r="2.5" fill="#CC1126"/></g></svg><span>Playing games</span></li><li><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="#141216" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)"><path d="M32 18C24 12 14 12 6 15V52C14 49 24 49 32 55C40 49 50 49 58 52V15C50 12 40 12 32 18Z" fill="#F3EDE1"/><path d="M32 18V55M14 25C18 24 21 24 25 26M14 34C18 33 21 33 25 35M39 26C43 24 46 24 50 25" stroke="#141216"/></g></svg><span>Reading books</span></li></ul>
+    <ul class="links">
+      <li><a href="mailto:shreyanshsarthak10@gmail.com" data-label="Say hi">Email</a></li>
+      <li><a href="https://github.com/sarthax10" data-label="Open">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/shreyansh-sarthak" data-label="Open">LinkedIn</a></li>
+    </ul>
+  </section>
+
+  <section class="work" id="work" data-dot="red" data-guide="laptop" data-say="Click one to open it.">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="hand3" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter></defs></svg>
+    <h2 class="cut" aria-label="Things I built"><span aria-hidden="true"><span class="word"><span class="scrap ink" style="rotate:-5deg">T</span><span class="scrap red" style="rotate:3deg">H</span><span class="scrap plain" style="rotate:-2deg">I</span><span class="scrap ink" style="rotate:4deg">N</span><span class="scrap plain" style="rotate:-4deg">G</span><span class="scrap red" style="rotate:2deg">S</span></span><span class="word"><span class="scrap ink" style="rotate:5deg">I</span></span><span class="word"><span class="scrap plain" style="rotate:3deg">B</span><span class="scrap ink" style="rotate:-2deg">U</span><span class="scrap plain" style="rotate:4deg">I</span><span class="scrap red" style="rotate:-4deg">L</span><span class="scrap ink" style="rotate:2deg">T</span></span></span></h2>
+    <svg class="doodle-art work-pencil" viewBox="0 0 420 170" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path class="pop" d="M72 96L304 28L324 88L92 156L38 150Z" fill="#CC1126" stroke="#141216" stroke-width="7"/>
+  <path d="M72 96L92 156L38 150Z" fill="#F3EDE1" stroke="#141216" stroke-width="6"/>
+  <path d="M46 128L38 150L60 152Z" fill="#141216"/>
+  <path d="M304 28L346 16L366 76L324 88Z" fill="#F3EDE1" stroke="#141216" stroke-width="7"/>
+  <path class="draw" pathLength="1" d="M104 110L310 50" stroke="var(--ink)" stroke-width="5"/>
+  <path class="draw" pathLength="1" d="M394 22L414 12M398 74L418 78" stroke="var(--ink)" stroke-width="6"/></g></svg><svg class="doodle-art work-note" viewBox="0 0 330 150" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path class="draw" pathLength="1" d="M16 96C74 26 200 34 264 72M222 42L268 74L222 104" stroke="var(--red)" stroke-width="7"/></g></svg><svg class="doodle-art work-clip" viewBox="0 0 150 330" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path class="draw" pathLength="1" d="M100 82V238C100 276 42 276 42 238V58C42 12 118 12 118 58V236" stroke="var(--ink)" stroke-width="8"/>
+  <path class="draw" pathLength="1" d="M34 300L46 320M46 300L34 320" stroke="var(--red)" stroke-width="5"/></g></svg>
+    <p class="pull" id="pullHint">They’re only taped down, so pull them around.</p>
+    <ul class="prints" id="prints">
+      <li class="print" style="--r:-2.2deg">
+        <a href="https://github.com/sarthax10/strata" data-label="Open" draggable="false">
+          <span class="tape" aria-hidden="true"></span>
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#141216"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path d="M62 52H338Q346 52 346 60V240Q346 250 336 250H64Q54 250 54 240V60Q54 52 62 52Z" stroke="#F3EDE1" stroke-width="7"/>
+  <path d="M54 84H346M204 84V250M204 166H346" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M74 68H78M92 68H96M110 68H114" stroke="#CC1126" stroke-width="9"/>
+  <path d="M76 108L94 122L76 136M104 138H134" stroke="#F3EDE1" stroke-width="7"/>
+  <path d="M76 172H172M76 192H148M76 212H182" stroke="#F3EDE1" stroke-width="5"/>
+  <path d="M226 108H320M226 128H292M226 148H306" stroke="#F3EDE1" stroke-width="5"/>
+  <path d="M274 184L282 204L302 212L282 220L274 240L266 220L246 212L266 204Z" fill="#CC1126" stroke="#F3EDE1" stroke-width="5"/></g></svg>
+          <span class="caption">
+            <strong>Strata</strong>
+            <span class="what">A Windows terminal with tiling panes and a Claude Code agent built in.</span>
+            <span class="tech">Rust, Tauri, TypeScript, React</span>
+          </span>
+        </a>
+      </li>
+      <li class="print" style="--r:1.6deg">
+        <a href="https://github.com/sarthax10/rackwm" data-label="Open" draggable="false">
+          <span class="tape" aria-hidden="true"></span>
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#CC1126"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path d="M52 48H176V146H52Z" fill="#141216" stroke="#F3EDE1" stroke-width="8"/>
+  <path d="M194 48H348V110H194Z" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M194 128H266V252H194Z" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M284 128H348V252H284Z" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M52 164H176V252H52Z" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M70 76L88 90L70 104M100 112H136" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M38 34L24 20M190 34L204 20M38 160L24 174" stroke="#F3EDE1" stroke-width="6"/></g></svg>
+          <span class="caption">
+            <strong>rackwm</strong>
+            <span class="what">A native tiling window manager for Windows, with a live focus glow and settings that reload as you save them.</span>
+            <span class="tech">Rust, Win32</span>
+          </span>
+        </a>
+      </li>
+      <li class="print" style="--r:-1.1deg">
+        <a href="https://github.com/sarthax10/antiquary" data-label="Open" draggable="false">
+          <span class="tape" aria-hidden="true"></span>
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#141216"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <circle cx="150" cy="130" r="88" stroke="#F3EDE1" stroke-width="7"/>
+  <circle cx="150" cy="130" r="17" fill="#CC1126" stroke="#F3EDE1" stroke-width="6"/>
+  <circle cx="150" cy="78" r="21" stroke="#F3EDE1" stroke-width="6"/><circle cx="150" cy="182" r="21" stroke="#F3EDE1" stroke-width="6"/>
+  <circle cx="98" cy="130" r="21" stroke="#F3EDE1" stroke-width="6"/><circle cx="202" cy="130" r="21" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M150 218C220 232 268 214 362 240M146 262C216 276 272 256 358 280" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M196 234L190 262M238 234L232 262M282 232L278 260M326 236L322 266" stroke="#F3EDE1" stroke-width="5"/></g></svg>
+          <span class="caption">
+            <strong>Antiquary</strong>
+            <span class="what">Turns surprising true history into short, fact-checked videos, with a review desk where a person approves each story.</span>
+            <span class="tech">Python, Flask, React, PostgreSQL, Docker</span>
+          </span>
+        </a>
+      </li>
+      <li class="print" style="--r:2.1deg">
+        <a href="https://github.com/sarthax10/schematic" data-label="Open" draggable="false">
+          <span class="tape" aria-hidden="true"></span>
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#CC1126"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path d="M152 34H248Q258 34 258 44V258Q258 268 248 268H152Q142 268 142 258V44Q142 34 152 34Z" fill="#141216" stroke="#F3EDE1" stroke-width="7"/>
+  <path d="M184 118L228 150L184 182Z" fill="#F3EDE1" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M38 72H100V116H38ZM36 190H100V236H36Z" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M68 118V188M102 92C114 92 124 92 134 100M126 88L136 100L122 106" stroke="#F3EDE1" stroke-width="5"/>
+  <path d="M300 58H364V102H300ZM300 184H364V230H300Z" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M332 104V182M266 150C278 150 292 138 300 118" stroke="#F3EDE1" stroke-width="5"/></g></svg>
+          <span class="caption">
+            <strong>Schematic</strong>
+            <span class="what">Writes, storyboards and renders animated engineering explainers, pausing for human review before anything is designed.</span>
+            <span class="tech">Python, HTML, JavaScript, ffmpeg</span>
+          </span>
+        </a>
+      </li>
+      <li class="print" style="--r:-1.7deg">
+        <a href="https://github.com/sarthax10/juno-assistant" data-label="Open" draggable="false">
+          <span class="tape" aria-hidden="true"></span>
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#141216"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <circle cx="200" cy="150" r="112" stroke="#F3EDE1" stroke-width="6"/>
+  <path d="M112 134V168M140 104V198M168 124V178M196 76V226M224 112V190M252 92V210M280 130V172" stroke="#F3EDE1" stroke-width="10"/>
+  <path d="M196 76V226" stroke="#CC1126" stroke-width="10"/>
+  <path d="M332 74C354 104 354 196 332 228M360 50C392 96 392 206 360 252M68 74C46 104 46 196 68 228" stroke="#F3EDE1" stroke-width="6"/></g></svg>
+          <span class="caption">
+            <strong>Juno</strong>
+            <span class="what">A wake-word voice assistant for Omarchy Linux. Say its name and Claude answers out loud.</span>
+            <span class="tech">Python, QML, Whisper</span>
+          </span>
+        </a>
+      </li>
+      <li class="print" style="--r:1.2deg">
+        <a href="https://github.com/sarthax10/urbanConnect" data-label="Open" draggable="false">
+          <span class="tape" aria-hidden="true"></span>
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#CC1126"/><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path d="M46 150L160 54L274 150" stroke="#F3EDE1" stroke-width="8"/>
+  <path d="M74 132V258H246V132" fill="#141216" stroke="#F3EDE1" stroke-width="7"/>
+  <path d="M132 258V186H188V258" stroke="#F3EDE1" stroke-width="6"/>
+  <circle cx="312" cy="196" r="60" fill="#F3EDE1" stroke="#141216" stroke-width="7"/>
+  <path d="M312 160V198L338 212" stroke="#141216" stroke-width="8"/>
+  <path d="M230 62V38H252V82" stroke="#F3EDE1" stroke-width="6"/></g></svg>
+          <span class="caption">
+            <strong>UrbanConnect</strong>
+            <span class="what">Books home services without double-booking anyone, with separate customer and admin access.</span>
+            <span class="tech">C#, ASP.NET Core, React, MySQL</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <p class="back"><button class="plain" id="putBack" type="button" hidden>Put them back</button></p>
+    <div class="work-foot">
+      <div class="sign-pose">
+        <img class="pose" src="assets/doodles/sign.webp" alt="" width="626" height="1366" loading="lazy" draggable="false">
+        <p class="sign-text">I also make games. <a href="https://sarthax10.itch.io/watchnight" data-label="Play">Try Watchnight</a></p>
+      </div>
+      <div class="sign-copy">
+        <svg class="doodle-art" viewBox="0 0 220 110" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)"><path class="draw" pathLength="1" d="M210 70C150 20 80 22 18 56M52 26L14 58L62 76" stroke="var(--red)" stroke-width="7"/></g></svg>
+        <p>Watchnight is a social deduction horror game with a public playtest. It’s a hobby, and a good excuse to learn networking the hard way.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills" data-dot="ink" data-guide="confused" data-say="So many tools.">
+    <div class="rip-edge" data-tear="#F3EDE1" aria-hidden="true"></div>
+    <h2 class="cut" aria-label="My toolbox"><span aria-hidden="true"><span class="word"><span class="scrap ink" style="rotate:-4deg">M</span><span class="scrap plain" style="rotate:3deg">Y</span></span><span class="word"><span class="scrap paper" style="rotate:-2deg">T</span><span class="scrap ink" style="rotate:4deg">O</span><span class="scrap paper" style="rotate:-3deg">O</span><span class="scrap plain" style="rotate:2deg">L</span><span class="scrap ink" style="rotate:-5deg">B</span><span class="scrap plain" style="rotate:3deg">O</span><span class="scrap paper" style="rotate:-4deg">X</span></span></span></h2>
+    <p class="pull on-red">Stickers peel off too. Go on.</p>
+    <div class="skills-grid">
+      <div class="kits" id="kits" data-dot="red">
+        <div class="kit" style="rotate:-1deg"><span class="tape" aria-hidden="true"></span><h3>I write in</h3><ul><li class="sticker s0" style="--r:-3deg">C#</li><li class="sticker s1" style="--r:2deg">JavaScript</li><li class="sticker s2" style="--r:-1.5deg">TypeScript</li><li class="sticker s0" style="--r:3deg">Python</li><li class="sticker s1" style="--r:-2.5deg">Rust</li><li class="sticker s2" style="--r:1.5deg">SQL</li><li class="sticker s0" style="--r:2.5deg">C/C++</li></ul></div>
+        <div class="kit" style="rotate:0.8deg"><span class="tape" aria-hidden="true"></span><h3>I build with</h3><ul><li class="sticker s1" style="--r:-1.5deg">ASP.NET Core</li><li class="sticker s2" style="--r:3deg">React</li><li class="sticker s0" style="--r:-2.5deg">Node.js</li><li class="sticker s1" style="--r:1.5deg">Blazor</li><li class="sticker s2" style="--r:2.5deg">Flask</li></ul></div>
+        <div class="kit" style="rotate:-0.5deg"><span class="tape" aria-hidden="true"></span><h3>I store things in</h3><ul><li class="sticker s2" style="--r:-2.5deg">SQL Server</li><li class="sticker s0" style="--r:1.5deg">PostgreSQL</li><li class="sticker s1" style="--r:2.5deg">MySQL</li><li class="sticker s2" style="--r:-3deg">Redis</li><li class="sticker s0" style="--r:2deg">Dapper</li><li class="sticker s1" style="--r:-1.5deg">Entity Framework</li></ul></div>
+        <div class="kit" style="rotate:1deg"><span class="tape" aria-hidden="true"></span><h3>I ship on</h3><ul><li class="sticker s0" style="--r:2.5deg">AWS S3</li><li class="sticker s1" style="--r:-3deg">EC2</li><li class="sticker s2" style="--r:2deg">Lambda</li><li class="sticker s0" style="--r:-1.5deg">CloudFront</li><li class="sticker s1" style="--r:3deg">Docker</li><li class="sticker s2" style="--r:-2.5deg">GitHub Actions</li></ul></div>
+        <div class="kit" style="rotate:-0.8deg"><span class="tape" aria-hidden="true"></span><h3>I debug with</h3><ul><li class="sticker s1" style="--r:2deg">OpenTelemetry</li><li class="sticker s2" style="--r:-1.5deg">Postman</li><li class="sticker s0" style="--r:3deg">Git</li></ul></div>
+        <div class="kit" style="rotate:0.6deg"><span class="tape" aria-hidden="true"></span><h3>I care about</h3><ul><li class="sticker s2" style="--r:3deg">System design</li><li class="sticker s0" style="--r:-2.5deg">REST APIs</li><li class="sticker s1" style="--r:1.5deg">JWT auth</li><li class="sticker s2" style="--r:2.5deg">Distributed caching</li><li class="sticker s0" style="--r:-3deg">Observability</li></ul></div>
+      </div>
+      <div class="tools-pose">
+        <svg class="doodle-art" viewBox="0 0 400 780" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+          <path class="draw" pathLength="1" d="M34 96L60 122M60 96L34 122M360 40L368 62L390 70L368 78L360 100L352 78L330 70L352 62Z" stroke="var(--paper)" stroke-width="7"/>
+          <path class="draw" pathLength="1" d="M16 410C52 374 86 374 116 410M300 690C334 660 362 660 392 690" stroke="var(--paper)" stroke-width="7"/>
+        </g></svg>
+        <img class="pose" id="toolsPose" src="assets/doodles/tools.webp" alt="" width="698" height="1366" loading="lazy" draggable="false">
+        <p class="shirt-count" id="shirtCount">Stick 8 on my shirt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience" id="experience" data-dot="paper" data-guide="point" data-say="Newest first.">
+    <div class="rip-edge" data-tear="#CC1126" aria-hidden="true"></div>
+    <h2 class="cut" aria-label="Where I worked"><span aria-hidden="true"><span class="word"><span class="scrap plain" style="rotate:-4deg">W</span><span class="scrap red" style="rotate:3deg">H</span><span class="scrap paper" style="rotate:-2deg">E</span><span class="scrap red" style="rotate:4deg">R</span><span class="scrap plain" style="rotate:-3deg">E</span></span><span class="word"><span class="scrap red" style="rotate:-5deg">I</span></span><span class="word"><span class="scrap red" style="rotate:-4deg">W</span><span class="scrap plain" style="rotate:3deg">O</span><span class="scrap plain" style="rotate:-2deg">R</span><span class="scrap red" style="rotate:4deg">K</span><span class="scrap paper" style="rotate:-3deg">E</span><span class="scrap red" style="rotate:2deg">D</span></span></span></h2>
+    <div class="jobs">
+    <article class="job">
+      <div class="when-col"><p class="when">Feb 2026 to now</p><div class="carry-pose"><img class="pose" src="assets/doodles/carry.webp" alt="" width="477" height="1366" loading="lazy" draggable="false"></div></div>
+      <div class="sheet-wrap" style="rotate:-0.5deg">
+        <div class="job-sheet" data-rip data-dot="red">
+          <span class="tape" aria-hidden="true"></span>
+          <h3>LeadSquared</h3>
+          <p class="job-role">Software Developer, Bangalore</p>
+          <ul>
+          <li>Work across <mark>Portals, Landing Pages Pro, Widgets and Custom Apps</mark>, contributing to system design and infrastructure cost optimization.</li>
+          <li>Hardened Portals public authentication by replacing a static value baked into the website build with <mark>JWTs that expire after 10 minutes</mark>.</li>
+          <li>Ran a self-initiated <mark>security audit</mark>, identifying 4 vulnerabilities across access control, payment flows, cryptography and API data exposure, and filed remediation reports.</li>
+          <li>Built a <mark>real-time analytics pipeline</mark> for views, registrations and conversions, with metrics stored in Redis and shown on live dashboards.</li>
+          <li>Fixed an AWS Lambda and CloudFront distribution limit that was causing publish failures in the page builder.</li>
+          <li>Added OpenTelemetry structured logging across 3 .NET 8 services for centralized log aggregation.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <article class="job">
+      <div class="when-col"><p class="when">Jul 2025 to Feb 2026</p><svg class="doodle-art job-art" viewBox="0 0 180 210" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path d="M90 26C50 26 28 58 36 92C42 116 62 124 62 150H118C118 124 138 116 144 92C152 58 130 26 90 26Z" fill="#CC1126" stroke="#F3EDE1" stroke-width="7"/>
+  <path class="draw" pathLength="1" d="M66 168H114M72 186H108M74 104L90 72L106 104" stroke="var(--paper)" stroke-width="7"/>
+  <path class="draw" pathLength="1" d="M90 6V-8M24 36L8 24M156 36L172 24M12 92H-6M168 92H186" stroke="var(--paper)" stroke-width="6"/></g></svg></div>
+      <div class="sheet-wrap" style="rotate:0.6deg">
+        <div class="job-sheet" data-rip data-dot="red">
+          <span class="tape" aria-hidden="true"></span>
+          <h3>LeadSquared</h3>
+          <p class="job-role">Software Engineering Intern, Bangalore</p>
+          <ul>
+          <li>Built an <mark>autoresponder feature end to end</mark>: a React configuration panel in the form designer and ASP.NET Core logic that sends personalized confirmation emails.</li>
+          <li>Fixed a critical bug where a payload ID mismatch merged unrelated form submissions.</li>
+          <li>Attached device data and ad click and campaign IDs to activity events, enabling <mark>ad attribution</mark> and behavioral analytics.</li>
+          <li>Built dynamic React components for a drag-and-drop page designer.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <article class="job">
+      <div class="when-col"><p class="when">Jan 2025 to Jul 2025</p><svg class="doodle-art job-art" viewBox="0 0 180 210" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+  <path class="draw" pathLength="1" d="M30 74L90 44L150 74V148L90 180L30 148ZM30 74L90 104L150 74M90 104V180M60 58L120 90" stroke="var(--paper)" stroke-width="7"/>
+  <path d="M104 142L128 130V112L104 124Z" fill="#CC1126" stroke="#F3EDE1" stroke-width="5"/>
+  <path class="draw" pathLength="1" d="M16 28L28 40M28 28L16 40M152 20L158 34L172 40L158 46L152 60L146 46L132 40L146 34Z" stroke="var(--paper)" stroke-width="5"/></g></svg></div>
+      <div class="sheet-wrap" style="rotate:-0.4deg">
+        <div class="job-sheet" data-rip data-dot="red">
+          <span class="tape" aria-hidden="true"></span>
+          <h3>SABIC</h3>
+          <p class="job-role">Intern, Application Services, Bangalore</p>
+          <ul>
+          <li>Developed and enhanced <mark>5+ modules of an inventory management system</mark> using ASP.NET Core and Blazor.</li>
+          <li>Built REST APIs and integrated them with the front end, reducing manual data entry.</li>
+          <li>Used the Repository pattern and middleware to keep the codebase maintainable.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <section class="desk" id="desk" data-dot="red" data-guide="carry" data-say="Carrying these for now.">
+    <div class="rip-edge" data-tear="#141216" aria-hidden="true"></div>
+    <h2 class="cut" aria-label="On my desk"><span aria-hidden="true"><span class="word"><span class="scrap red" style="rotate:-4deg">O</span><span class="scrap ink" style="rotate:3deg">N</span></span><span class="word"><span class="scrap plain" style="rotate:-2deg">M</span><span class="scrap ink" style="rotate:4deg">Y</span></span><span class="word"><span class="scrap red" style="rotate:-3deg">D</span><span class="scrap plain" style="rotate:2deg">E</span><span class="scrap red" style="rotate:-5deg">S</span><span class="scrap ink" style="rotate:3deg">K</span></span></span></h2>
+    <p class="pull">What I’m poking at lately.</p>
+    <div class="desk-grid">
+      <ul class="notes"><li class="note-card n0"><span class="pin" aria-hidden="true"></span><h3><a href="https://github.com/sarthax10/strata" data-label="Open">Strata</a></h3><p>Making the agent pane feel like part of the terminal.</p></li><li class="note-card n1"><span class="pin" aria-hidden="true"></span><h3><a href="https://github.com/sarthax10/juno-assistant" data-label="Open">Juno</a></h3><p>Getting false wake-ups down without missing the real ones.</p></li><li class="note-card n2"><span class="pin" aria-hidden="true"></span><h3><a href="https://github.com/sarthax10/rackwm" data-label="Open">rackwm</a></h3><p>Giving it a proper, configurable keybinding table.</p></li><li class="note-card n3"><span class="pin" aria-hidden="true"></span><h3>Reading</h3><p>Learning how people verify distributed systems.</p></li></ul>
+      <div class="point-pose">
+        <svg class="doodle-art" viewBox="0 0 400 760" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+          <path class="draw" pathLength="1" d="M24 60L44 80M44 60L24 80" stroke="var(--red)" stroke-width="6"/>
+          <path class="draw" pathLength="1" d="M340 110L348 132L370 140L348 148L340 170L332 148L310 140L332 132Z" stroke="var(--ink)" stroke-width="6"/>
+          <path class="draw" pathLength="1" d="M300 700C330 672 360 672 388 700" stroke="var(--red)" stroke-width="6"/>
+        </g></svg>
+        <img class="pose" src="assets/doodles/point.webp" alt="" width="496" height="1366" loading="lazy" draggable="false">
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" data-dot="ink">
+    <div class="rip-edge" data-tear="#F3EDE1" aria-hidden="true"></div>
+    <h2 class="say">Say hi</h2>
+    <p class="mail"><a href="mailto:shreyanshsarthak10@gmail.com" data-label="Email">shreyanshsarthak10<wbr>@gmail.com</a></p>
+    <p class="actions">
+      <button class="plain" id="copyEmail" type="button">Copy my email</button>
+      <span id="copied" role="status"></span>
+    </p>
+    <ul class="elsewhere">
+      <li><a href="https://github.com/sarthax10" data-label="Open">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/shreyansh-sarthak" data-label="Open">LinkedIn</a></li>
+      <li><a href="assets/Shreyansh-Sarthak-Resume.pdf" download data-label="Save">Download my resume</a></li>
+    </ul>
+    <svg class="doodle-art telephone" viewBox="0 0 300 260" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+      <path d="M58 92C96 60 204 60 242 92L232 126L190 116V92C164 84 136 84 110 92V116L68 126Z" fill="#F3EDE1" stroke="#141216" stroke-width="7"/>
+      <path d="M92 124H208L238 218Q240 230 228 230H72Q60 230 62 218Z" fill="#141216" stroke="#F3EDE1" stroke-width="7"/>
+      <circle cx="150" cy="176" r="31" fill="#CC1126" stroke="#F3EDE1" stroke-width="6"/>
+      <circle cx="150" cy="176" r="8" fill="#F3EDE1"/>
+      <path class="draw" pathLength="1" d="M34 42C22 24 8 10 2 6M112 30C110 16 108 8 106 2M266 42C278 26 288 16 296 10" stroke="var(--paper)" stroke-width="6"/>
+      <path class="draw" pathLength="1" d="M18 150L30 162M30 150L18 162M270 170L282 182M282 170L270 182" stroke="var(--paper)" stroke-width="5"/>
+    </g></svg>
+    <svg class="plane" viewBox="0 0 560 320" aria-hidden="true">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+        <path d="M8 292C86 306 162 276 206 222C246 172 222 112 174 124C126 136 138 214 204 222C286 232 356 176 420 104" stroke="var(--paper)" stroke-width="5" stroke-dasharray="4 17"/>
+        <g id="planeShape">
+          <path class="pop" d="M552 12L396 92L450 118L470 182L500 134L552 12Z" fill="#F3EDE1" stroke="#141216" stroke-width="7"/>
+          <path class="pop" d="M552 12L450 118M552 12L470 182" fill="none" stroke="#141216" stroke-width="5"/>
+          <path class="pop" d="M470 182L478 132L500 134" fill="#CFC2A9" stroke="#141216" stroke-width="5"/>
+        </g>
+      </g>
+    </svg>
+    <svg class="envelope" viewBox="0 0 400 300" aria-hidden="true">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+        <path class="pop" d="M70 96L330 80L346 254L84 270Z" fill="#141216" stroke="#F3EDE1" stroke-width="7"/>
+        <path class="pop" d="M72 98L214 190L330 82M84 268L176 166M344 252L252 158" stroke="#F3EDE1" stroke-width="6"/>
+        <path class="pop" d="M276 96H318V146H276Z" fill="#F3EDE1" stroke="#F3EDE1" stroke-width="3"/>
+        <circle class="pop" cx="297" cy="120" r="11" fill="#CC1126"/>
+        <path class="draw" pathLength="1" d="M40 62L14 34M112 44L104 8M196 34L204 2M30 150L0 148M372 56L396 30" stroke="var(--paper)" stroke-width="7"/>
+        <path class="draw" pathLength="1" d="M18 232L30 262L60 268L34 280L28 300L16 280L0 276L14 262Z" stroke="var(--paper)" stroke-width="5"/>
+      </g>
+    </svg>
+    <div class="peek-wrap" aria-hidden="true">
+      <img class="peek" src="assets/doodles/jump.webp" alt="" width="825" height="1366" loading="lazy" draggable="false">
+      <svg class="peek-front" viewBox="0 0 825 1366">
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)">
+          <path class="draw" pathLength="1" d="M-60 90L-34 116M-34 90L-60 116M900 120L908 142L930 150L908 158L900 180L892 158L870 150L892 142Z" stroke="var(--paper)" stroke-width="9"/>
+          <path class="draw" pathLength="1" d="M-110 640C-70 604 -30 604 6 640" stroke="var(--paper)" stroke-width="9"/>
+        </g>
+        <text class="go-on" x="-620" y="1120" transform="rotate(-7 -620 1120)">go on, say hi</text>
+        <path class="draw" pathLength="1" d="M-40 1096C30 1076 90 1020 130 960M92 958L134 950L142 994" fill="none" stroke="var(--paper)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand3)"/>
+      </svg>
+    </div>
+    <footer class="foot" data-dot="red">
+      <div class="foot-edge" data-tear="#F3EDE1" aria-hidden="true"></div>
+      <p>Shreyansh Sarthak, Bangalore</p>
+      <p><a href="#top" data-label="Up">Back to top</a></p>
+    </footer>
+  </section>
+<div class="draw-bar" id="drawBar" role="toolbar" aria-label="Scribble tool">
+  <button id="drawToggle" type="button" aria-pressed="false">Draw on this page</button>
+  <span class="draw-tools" id="drawTools" hidden>
+    <button class="swatch red" id="penRed" type="button" aria-label="Red pen" aria-pressed="true"></button>
+    <button class="swatch ink" id="penInk" type="button" aria-label="Black pen" aria-pressed="false"></button>
+    <button id="drawUndo" type="button">Undo</button>
+    <button id="drawClear" type="button">Clear</button>
+  </span>
+</div>
+</main>
+
+<div class="ctx" id="ctx" role="menu" aria-label="Page menu" hidden data-dot="red">
+  <img src="assets/doodles/wave.webp" alt="" width="553" height="1366">
+  <div class="ctx-items" id="ctxItems"></div>
+  <p class="ctx-hint">Shift + right-click for the usual menu</p>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<dialog class="project" id="project" aria-labelledby="projectTitle" data-dot="red">
+  <article class="project-card" id="projectCard">
+    <button class="project-close" id="projectClose" type="button">Close</button>
+    <span class="tape" aria-hidden="true"></span>
+    <div class="project-cover" id="projectCover"></div>
+    <h2 id="projectTitle"></h2>
+    <p class="project-tech" id="projectTech"></p>
+    <div class="project-body" id="projectBody"></div>
+    <p class="project-links" id="projectLinks"></p>
+  </article>
+</dialog>
+
+<dialog class="palette" id="palette" aria-label="Search this site" data-dot="red">
+  <div class="palette-card">
+    <label class="palette-label" for="paletteInput">Where to?</label>
+    <input id="paletteInput" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="paletteList" placeholder="Try strata, resume or draw">
+    <ul id="paletteList" role="listbox" aria-label="Results"></ul>
+    <p class="palette-hint">Arrow keys to move, Enter to go, Esc to close</p>
+  </div>
+</dialog>
+
+<div class="guide" id="guide" aria-hidden="true"><span class="guide-say" id="guideSay"></span><img id="guideImg" alt="" draggable="false"></div>
+
+<canvas class="scribble" id="scribble" aria-hidden="true"></canvas>
+
+<div class="dot" id="dot" aria-hidden="true"><i><span id="dotLabel"></span></i></div>
+<script src="site.js"></script>
+</body>
+</html>
